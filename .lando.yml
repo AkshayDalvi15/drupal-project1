@@ -1,16 +1,4 @@
-# name: drupal-app
-# recipe: drupal9
-# config:
-#   webroot: web
-# services:
-#   phpmyadmin:
-#     type: phpmyadmin
-#     hosts:
-#       - database
-# proxy:
-#   phpmyadmin:
-#     - phpmyadmin.ecom.lndo.site
-name: drupal-app
+name: drupal-project1
 recipe: drupal9
 config:
   webroot: web
@@ -34,4 +22,29 @@ tooling:
     service: node
 proxy:
   phpmyadmin:
-  - phpmyadmin.drupal9.lndo.site 
+    - phpmyadmin.ecom.lndo.site
+# name: drupal-app
+# recipe: drupal9
+# config:
+#   webroot: web
+# services:
+#   node:
+#     type: node:14
+#     command: npm start
+#     build:
+#       - "cd /app && npm install & npm install -g gulp-cli"
+#     build_as_root:
+#       - curl -sL https://deb.nodesource.com/setup_12.x | bash -
+#       - apt-get install -y nodejs
+#   phpmyadmin:
+#     type: phpmyadmin
+#     hosts:
+#       - database
+# tooling:
+#   node:
+#     service: node
+#   npm:
+#     service: node
+# proxy:
+#   phpmyadmin:
+#   - phpmyadmin.drupal9.lndo.site 
