@@ -1,12 +1,12 @@
-uuid: 6499b559-e4d9-43c7-b424-da9279b975f8
+uuid: 0fdf4ed0-3610-474b-b9e9-25de5d36a846
 langcode: en
 status: true
 dependencies:
   module:
     - node
     - user
-id: omkar_don
-label: 'omkar Don'
+id: test
+label: test
 module: views
 description: ''
 tag: ''
