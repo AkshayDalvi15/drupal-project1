@@ -1,0 +1,14 @@
+uuid: 97121540-e5f8-4d08-979c-9a9e096ac938
+name: 'Blogging World'
+mail: akshaydalvi212@gmail.com
+slogan: 'Practical blogs for impractical people'
+page:
+  403: /node/4
+  404: /node/2
+  front: /node/1
+admin_compact_mode: false
+weight_select_max: 100
+langcode: en
+default_langcode: en
+_core:
+  default_config_hash: yTxtFqBHnEWxQswuWvkjE8mKw2t8oKuCL1q8KnfHuGE

@@ -1,0 +1,22 @@
+uuid: 500c404b-675b-4b1a-aa32-0cd77104573a
+langcode: en
+status: true
+dependencies:
+  module:
+    - system
+  theme:
+    - simpleblog
+_core:
+  default_config_hash: fl-r2AJb5xDvQR5Hcv0r6ki4nae_bJFrOWiSstC8q5k
+id: simpleblog_powered
+theme: simpleblog
+region: footer_fourth
+weight: 0
+provider: null
+plugin: system_powered_by_block
+settings:
+  id: system_powered_by_block
+  label: 'Powered by Drupal'
+  provider: system
+  label_display: '1'
+visibility: {  }

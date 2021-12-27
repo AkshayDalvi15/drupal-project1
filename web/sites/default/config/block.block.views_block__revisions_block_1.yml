@@ -1,0 +1,25 @@
+uuid: af59a099-b9d6-4039-96f2-d507359d4680
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.revisions
+  module:
+    - views
+  theme:
+    - bartik
+id: views_block__revisions_block_1
+theme: bartik
+region: sidebar_second
+weight: 0
+provider: null
+plugin: 'views_block:revisions-block_1'
+settings:
+  id: 'views_block:revisions-block_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+  items_per_page: none
+  context_mapping: {  }
+visibility: {  }

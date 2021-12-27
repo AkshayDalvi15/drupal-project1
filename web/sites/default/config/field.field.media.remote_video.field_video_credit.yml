@@ -1,0 +1,21 @@
+uuid: 4ca193c0-7835-4c46-a9c4-385a4f7e5d5c
+langcode: en
+status: true
+dependencies:
+  config:
+    - field.storage.media.field_video_credit
+    - media.type.remote_video
+  module:
+    - text
+id: media.remote_video.field_video_credit
+field_name: field_video_credit
+entity_type: media
+bundle: remote_video
+label: 'Video credit'
+description: ''
+required: false
+translatable: false
+default_value: {  }
+default_value_callback: ''
+settings: {  }
+field_type: text

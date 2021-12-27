@@ -1,0 +1,86 @@
+uuid: cfb84983-0366-40de-ab6b-26f743ce1f04
+langcode: en
+status: true
+dependencies:
+  config:
+    - node.type.article
+  module:
+    - content_moderation
+id: copy_editing_required
+label: 'copy editing required'
+type: content_moderation
+type_settings:
+  states:
+    coming_soon:
+      published: false
+      default_revision: false
+      label: 'Coming soon'
+      weight: 1
+    draft:
+      label: Draft
+      published: false
+      default_revision: false
+      weight: -3
+    needs_copy_editing:
+      published: false
+      default_revision: false
+      label: 'Needs copy editing'
+      weight: -1
+    needs_technical_review:
+      published: false
+      default_revision: false
+      label: 'Needs Technical review'
+      weight: -2
+    published:
+      published: true
+      default_revision: true
+      label: Published
+      weight: 2
+    scheduled_for_puclication:
+      published: false
+      default_revision: false
+      label: 'Scheduled for publication'
+      weight: 0
+  transitions:
+    create_new_draft:
+      label: 'Create New Draft'
+      to: draft
+      weight: -3
+      from:
+        - draft
+        - published
+    publish:
+      label: Publish
+      to: published
+      weight: 2
+      from:
+        - coming_soon
+        - scheduled_for_puclication
+    to_coming_soon:
+      label: 'To coming soon'
+      from:
+        - scheduled_for_puclication
+      to: coming_soon
+      weight: 1
+    to_copy_editing:
+      label: 'To copy editing'
+      from:
+        - needs_technical_review
+      to: needs_copy_editing
+      weight: -1
+    to_scheduled_for_publication_:
+      label: 'To scheduled for publication '
+      from:
+        - needs_copy_editing
+      to: scheduled_for_puclication
+      weight: 0
+    to_technical_review:
+      label: 'To Technical review'
+      from:
+        - draft
+      to: needs_technical_review
+      weight: -2
+  entity_types:
+    node:
+      - article
+  default_moderation_state: draft

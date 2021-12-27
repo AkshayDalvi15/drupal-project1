@@ -1,0 +1,17 @@
+uuid: cb8a9338-2182-4368-b6bd-5324e55fb4e5
+langcode: en
+status: true
+dependencies:
+  module:
+    - menu_ui
+third_party_settings:
+  menu_ui:
+    available_menus: {  }
+    parent: ''
+name: Author
+type: author
+description: 'basic information about the Author.'
+help: ''
+new_revision: true
+preview_mode: 1
+display_submitted: false

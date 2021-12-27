@@ -1,0 +1,28 @@
+uuid: c10f9d34-6aba-4c9c-b621-fab26d469a32
+langcode: en
+status: true
+dependencies:
+  config:
+    - views.view.search_engine
+  module:
+    - system
+    - views
+  theme:
+    - bartik
+id: exposedformsearch_enginepage_1
+theme: bartik
+region: content
+weight: 0
+provider: null
+plugin: 'views_exposed_filter_block:search_engine-page_1'
+settings:
+  id: 'views_exposed_filter_block:search_engine-page_1'
+  label: ''
+  provider: views
+  label_display: visible
+  views_label: ''
+visibility:
+  request_path:
+    id: request_path
+    pages: /search-engine
+    negate: false

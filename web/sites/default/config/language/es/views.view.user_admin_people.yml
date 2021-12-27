@@ -1,0 +1,36 @@
+display:
+  default:
+    display_title: 'Por defecto'
+    display_options:
+      exposed_form:
+        options:
+          reset_button_label: Restablecer
+          exposed_sorts_label: 'Ordenar por'
+          sort_asc_label: Asc
+          sort_desc_label: Desc
+      pager:
+        options:
+          expose:
+            items_per_page_label: 'Elementos por página'
+            items_per_page_options_all_label: '- Todo -'
+            offset_label: Desplazamiento
+      fields:
+        user_bulk_form:
+          label: 'Actualización masiva'
+        status:
+          label: Estado
+          settings:
+            format_custom_true: Activo
+        roles_target_id:
+          label: Roles
+        operations:
+          label: Operaciones
+      filters:
+        status:
+          group_info:
+            label: Estado
+            group_items:
+              1:
+                title: Activo
+  page_1:
+    display_title: Página
