@@ -40,3 +40,6 @@ sites/simpletest
 
 # Ignore SimpleTest multi-site environment.
 # simpletest
+
+/web/sites/*/settings.php
+/web/sites/*/settings.local.php
