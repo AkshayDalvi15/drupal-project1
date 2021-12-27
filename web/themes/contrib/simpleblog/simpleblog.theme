@@ -1,0 +1,104 @@
+<?php
+
+/**
+ * @file
+ * Implements hook_preprocess_html().
+ *
+ * Override the variables into the html template.
+ */
+
+use Drupal\file\Entity\File;
+
+/**
+ *
+ */
+function simpleblog_preprocess_html(&$variables) {
+
+  $grid = theme_get_setting('grid_view', 'simpleblog');
+  if ($grid) {
+    $variables['attributes']['class'][] = 'sbgrid';
+  }
+}
+
+/**
+ * Implements hook_preprocess_page().
+ *
+ * Override the variables into the page template.
+ */
+function simpleblog_preprocess_page(&$variables) {
+
+  // Banner Image.
+  $show_banner = theme_get_setting('show', 'simpleblog');
+  $variables['show_banner'] = $show_banner;
+
+  if ($show_banner) {
+    $fid = theme_get_setting("image", "simpleblog");
+    if (!empty($fid)) {
+      $file = File::load($fid[0]);
+      $uri = $file->getFileUri();
+      $image_path = file_create_url($uri);
+    }
+    else {
+      $image_path = drupal_get_path('theme', 'simpleblog') . '/images/banner.jpg';
+    }
+    $variables['banner_image'] = $image_path;
+  }
+
+  // Copyright.
+  $copyright = theme_get_setting("copyright", "simpleblog");
+  $variables['copyright'] = $copyright . ' ' . date('Y');
+
+  // Social Links.
+  $variables['drupal_link'] = theme_get_setting("drupal", "simpleblog");
+  $variables['facebook_link'] = theme_get_setting("facebook", "simpleblog");
+  $variables['instagram_link'] = theme_get_setting("instagram", "simpleblog");
+  $variables['twitter_link'] = theme_get_setting("twitter", "simpleblog");
+  $variables['googleplus_link'] = theme_get_setting("googleplus", "simpleblog");
+
+  // Add information about the number of sidebars.
+  if (!empty($variables['page']['sidebar_first']) && !empty($variables['page']['sidebar_second'])) {
+    $variables['main_class'] = 'col6';
+    $variables['sf_class'] = 'col3';
+    $variables['ss_class'] = 'col3';
+  }
+  elseif (!empty($variables['page']['sidebar_first'])) {
+    $variables['main_class'] = 'col9';
+    $variables['sf_class'] = 'col3';
+  }
+  elseif (!empty($variables['page']['sidebar_second'])) {
+    $variables['main_class'] = 'col9';
+    $variables['ss_class'] = 'col3';
+  }
+  else {
+    $variables['main_class'] = 'col12';
+  }
+}
+
+/**
+ * Prepares variables for comment templates.
+ * Default template: comment.html.twig.
+ */
+function simpleblog_preprocess_breadcrumb(&$variables) {
+  // Set cache context as 'URL'.
+  $variables['#cache']['contexts'][] = 'url';
+
+  // Set breadcrumb.
+  if (($node = \Drupal::routeMatch()->getParameter('node')) && $variables['breadcrumb']) {
+    $variables['breadcrumb'][] = [
+      'text' => $node->getTitle(),
+      'url' => $node->URL(),
+    ];
+  }
+}
+
+/**
+ *
+ */
+function simpleblog_theme_suggestions_node_alter(array &$suggestions, array $variables, $hook) {
+  $node = $variables['elements']['#node'];
+  $type = $node->bundle();
+  $view_mode = $variables['elements']['#view_mode'];
+
+  $suggestions[] = 'node__' . $type;
+  $suggestions[] = 'node__' . $type . '__' . $view_mode;
+}

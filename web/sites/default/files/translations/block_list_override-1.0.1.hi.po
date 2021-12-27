@@ -1,0 +1,24 @@
+# Hindi translation of Block List Override (1.0.1)
+# Copyright (c) 2020 by the Hindi translation team
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Block List Override (1.0.1)\n"
+"POT-Creation-Date: 2020-07-12 22:46+0000\n"
+"PO-Revision-Date: YYYY-mm-DD HH:MM+ZZZZ\n"
+"Language-Team: Hindi\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n!=1);\n"
+
+msgid "Remove"
+msgstr "हटाएँ"
+msgid "Action"
+msgstr "कार्रवाई"
+msgid "Settings"
+msgstr "स्थापनायें"
+msgid "Label"
+msgstr "लेबल"
+msgid "Module"
+msgstr "मॉड्यूल"

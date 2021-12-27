@@ -1,0 +1,14 @@
+
+GIT commands for saving the data on GITHUB
+
+1) git init
+2) git remote add origin <git repository link>
+3) git status
+4) git add . (to add all the files)
+5) git commit -m "comment string"
+6) git push origin main
+
+
+for help - git help
+for clone the repository -  git clone <git repository link>
+for create a branch of repository - git checkout -b <branch name>

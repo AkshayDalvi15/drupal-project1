@@ -1,0 +1,1 @@
+window.drupalTranslations = {"strings":{"":{"Cancel":"Cancelar","Edit":"Editar","Add":"Agregar","Hide":"Ocultar","You have unsaved changes.":"Hay cambios sin guardar.","Home":"Inicio","Image":"Imagen"}},"pluralFormula":{"1":0,"default":1}};
