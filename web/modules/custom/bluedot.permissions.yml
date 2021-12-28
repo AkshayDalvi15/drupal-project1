@@ -1,0 +1,18 @@
+'delete contact entity':
+  title: Delete Entity content
+  description: Allows users to delete contacts.
+'add contact entity':
+  title: Add Entity content
+  description: Allows users to add new contacts.
+'view contact entity':
+  title: View Entity content
+'edit contact entity':
+  title: Edit Entity content
+  description: Allows users to edit contacts.
+'administer contact entity':
+  title: Admin settings
+  description: Allows users to alter the settings related to contacts.
+  restrict access: TRUE
+
+# permission_callbacks:
+#   - \Drupal\node\NodePermissions::nodeTypePermissions
