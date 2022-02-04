@@ -15,11 +15,40 @@ services:
     type: phpmyadmin
     hosts:
       - database
+    appserver:
+    cmd: drush --root=/app/web
+    build:
+      - "composer global require drupal/coder"
+      - "/app/vendor/bin/phpcs --config-set installed_paths /app/vendor/drupal/coder/coder_sniffer"
+    build_as_root:
+      - apt-get update -y && apt-get install vim -y
+      - echo "Updating PHP-FPM settings ..."
+      - sed -i 's/pm.max_children = 5/pm.max_children = 256/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/pm.min_spare_servers = 1/pm.min_spare_servers = 32/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/pm.max_spare_servers = 3/pm.max_spare_servers = 64/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/pm.start_servers = 2/pm.start_servers = 64/g' /usr/local/etc/php-fpm.d/www.conf
+      - sed -i 's/;pm.max_requests = 500/pm.max_requests = 500/g' /usr/local/etc/php-fpm.d/www.conf
 tooling:
   node:
     service: node
   npm:
     service: node
+  drupalcs:
+    service: appserver
+    cmd: "/app/vendor/bin/phpcs --standard=Drupal,DrupalPractice"
+    description: Run phpcs Drupal Coding Standards against a given file or directory.
+  drupalcbf:
+    service: appserver
+    cmd: "/app/vendor/bin/phpcbf --standard=Drupal"
+    description: Automatically fix Drupal coding standards suggestions.
+  phpunit:
+    service: appserver
+    cmd: vendor/bin/phpunit --configuration web/core
+    description: Run PHPUnit tests on a specific file or Drupal module.
+  drupal-check:
+    service: appserver
+    cmd: vendor/bin/drupal-check -ad
+    description: Check Drupal code for deprecations and discover bugs via static analysis.
 proxy:
   phpmyadmin:
     - phpmyadmin.ecom.lndo.site
